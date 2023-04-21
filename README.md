@@ -7,7 +7,7 @@
 <h1 align="center">Reactivity</h1>
 
 <p align="center">
-Games for reativity testing
+<b>Games for reativity testing</b>
 </p>
 
 <br>
@@ -15,3 +15,4 @@ Games for reativity testing
 ## Features
 
 - 😼 [Sudden Reaction](./src/games/Sudden)
+- 🦉 [Continuous Reaction](./src/games/Continuous)

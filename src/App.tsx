@@ -9,12 +9,13 @@ const GAMES_MAP = [
     description: "Click on the screen when the background color changes.",
     component: <Sudden />,
   },
-  // {
-  //   key: "continuous",
-  //   title: "Continuous Reaction",
-  //   description: "Click on the icon that continues to appear on the screen.",
-  //   component: <Continuous />,
-  // },
+  {
+    key: "continuous",
+    title: "🦉 Continuous Reaction",
+    description:
+      "Click on the right icon that continues to appear on the screen.",
+    component: <Continuous />,
+  },
 ];
 
 function App() {

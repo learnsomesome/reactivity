@@ -2,6 +2,12 @@ import { Box, Button, Flex, Text } from "@chakra-ui/react";
 import { useEffect, useMemo, useReducer, useRef } from "react";
 import { getRandomColor } from "../../util";
 
+// unit => ms
+const MIN_SHOW_TIME = 1000;
+const MAX_SHOW_TIME = 5000;
+
+const ONE_SECOND_INTERVAL = 60;
+
 const formatScore = (ms: number) => {
   if (ms < 1000) {
     return ms + " ms";
@@ -45,8 +51,12 @@ export const Sudden = () => {
 
     if (state.start) {
       let number = 0;
-      // 1s - 5s => 60 - 300
-      const point = Math.floor(300 + (60 + 1 - 300) * Math.random());
+      const minTotalIntervals = (MIN_SHOW_TIME / 1000) * ONE_SECOND_INTERVAL;
+      const maxTotalIntervals = (MAX_SHOW_TIME / 1000) * ONE_SECOND_INTERVAL;
+      const point = Math.floor(
+        maxTotalIntervals +
+          (minTotalIntervals + 1 - maxTotalIntervals) * Math.random()
+      );
 
       timer = setInterval(() => {
         number++;
@@ -56,7 +66,7 @@ export const Sudden = () => {
 
           dispatch({ type: "START_TIMING" });
         }
-      }, 1000 / 60);
+      }, 1000 / ONE_SECOND_INTERVAL);
     }
 
     return () => {
