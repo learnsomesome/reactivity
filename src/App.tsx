@@ -1,6 +1,17 @@
 import { useMemo, useState } from "react";
-import { Box, Button, Divider, Flex, Heading, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Divider,
+  Flex,
+  Heading,
+  IconButton,
+  Stack,
+  Text,
+  useColorMode,
+} from "@chakra-ui/react";
 import { Continuous, Sudden } from "./games";
+import { Github, LightSun, DarkMoon } from "./assets/icons";
 
 const GAMES_MAP = [
   {
@@ -20,6 +31,7 @@ const GAMES_MAP = [
 
 function App() {
   const [key, setKey] = useState("");
+  const { colorMode, toggleColorMode } = useColorMode();
 
   const game = useMemo(() => GAMES_MAP.find((item) => item.key === key), [key]);
 
@@ -38,6 +50,32 @@ function App() {
         </Box>
       ) : (
         <Flex height="100%" direction="column" align="center" justify="center">
+          <Stack
+            position="absolute"
+            top={4}
+            right={4}
+            direction="row"
+            spacing={4}
+          >
+            <IconButton
+              title="GitHub"
+              aria-label="GitHub"
+              icon={<Github fontSize={20} />}
+              onClick={() => window.open("https://github.com/learnsomesome")}
+            />
+            <IconButton
+              title="Toggle Color Theme"
+              aria-label="Toggle Color Theme"
+              icon={
+                colorMode === "light" ? (
+                  <DarkMoon fontSize={20} />
+                ) : (
+                  <LightSun fontSize={20} />
+                )
+              }
+              onClick={toggleColorMode}
+            />
+          </Stack>
           <Heading>Reactivity</Heading>
           <Flex mt={12} direction="column">
             {GAMES_MAP.map(({ key, title }) => (
